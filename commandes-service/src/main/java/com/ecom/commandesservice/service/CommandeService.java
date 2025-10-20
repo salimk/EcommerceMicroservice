@@ -17,9 +17,7 @@ public class CommandeService {
         this.ligneCommandeRepository = ligneCommandeRepository;
     }
     /// good
-    ///
-    /// @return
-    public Commande ajouterCommande(Commande commande){
+    public void ajouterCommande(Commande commande){
         Commande savedCommande = commandeRepository.save(commande);
         // Si les lignes ne sont pas sauvegardées automatiquement, les sauvegarder manuellement
         if (commande.getListligneCommande() != null) {
@@ -28,7 +26,6 @@ public class CommandeService {
                 ligneCommandeRepository.save(ligne);
             });
         }
-        return savedCommande;
     }
 
     public void ajouterligneCommande(Commande commande, LigneCommande ligneCommande){

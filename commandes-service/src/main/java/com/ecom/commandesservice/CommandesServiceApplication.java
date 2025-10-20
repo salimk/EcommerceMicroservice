@@ -6,6 +6,7 @@ import com.ecom.commandesservice.service.CommandeService;
 import jakarta.persistence.OneToMany;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.context.annotation.Bean;
@@ -26,11 +27,11 @@ public class CommandesServiceApplication {
     ApplicationRunner init(CommandeService commandeService) {
         return args -> {
 
-            Commande commandeA = new Commande(null,1L,new Date(),null,0,"en-cours");
+            Commande commandeA = new Commande(null,new Date(),null,0,"en-cours");
 
-            LigneCommande ligne1 = new LigneCommande(null, commandeA, 1L, "laptop", 1, 2000.00);
-            LigneCommande ligne2 = new LigneCommande(null, commandeA, 2L, "laptop", 1, 2000.00);
-            LigneCommande ligne3 = new LigneCommande( null, commandeA,3L, "laptop", 1, 2000.00);
+            LigneCommande ligne1 = new LigneCommande(null, commandeA, "1321654", "laptop", 1, 2000.00);
+            LigneCommande ligne2 = new LigneCommande(null, commandeA, "1321654", "laptop", 1, 2000.00);
+            LigneCommande ligne3 = new LigneCommande(null, commandeA, "1321654", "laptop", 1, 2000.00);
 
             List<LigneCommande> lignes = Arrays.asList(ligne1, ligne2, ligne3);
             commandeA.setListligneCommande(lignes);

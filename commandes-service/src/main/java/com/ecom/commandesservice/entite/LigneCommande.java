@@ -16,7 +16,7 @@ public class LigneCommande {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "idcommande", nullable = false)
     private Commande commande;
-    private Long idproduit;
+    private String codebarre;
     private String nomproduit;
     private int quantite;
     private double prixUnitaire;

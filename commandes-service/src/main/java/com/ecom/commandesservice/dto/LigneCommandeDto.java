@@ -10,7 +10,7 @@ import java.io.Serializable;
 @Value
 public class LigneCommandeDto implements Serializable {
     Long id;
-    Long idproduit;
+    String idproduit;
     String nomproduit;
     int quantite;
     double prixUnitaire;

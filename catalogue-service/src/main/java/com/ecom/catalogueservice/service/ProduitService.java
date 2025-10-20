@@ -24,7 +24,6 @@ public class ProduitService {
         return produitRepository.findById(id).orElseThrow(() -> new EntityNotFoundException());
 
     }
-
     public void save(Produit produit) {
         produitRepository.save(produit);
     }

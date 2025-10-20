@@ -6,7 +6,10 @@ import com.ecom.commandesservice.mapper.CommandeMapper;
 import com.ecom.commandesservice.mapper.CommandeMapperDetail;
 import com.ecom.commandesservice.service.CommandeService;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.List;
 
@@ -32,10 +35,4 @@ public class CommandeController {
     public ResponseEntity<CommandeDtoDetail> getCommandeById(@PathVariable Long id){
         return ResponseEntity.ok(CommandeMapperDetail.toDto(commandeService.getCommandeById(id)));
     }
-    
-    @PostMapping("/new")
-    public ResponseEntity<CommandeDtoDetail> newcommande(@RequestBody CommandeDtoDetail commandeDtoDetail) {
-        return ResponseEntity.ok(CommandeMapperDetail.toDto(commandeService.ajouterCommande(CommandeMapperDetail.toEntity(commandeDtoDetail))));
-    }
-
 }

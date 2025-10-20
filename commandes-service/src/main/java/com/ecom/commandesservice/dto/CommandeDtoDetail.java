@@ -13,7 +13,6 @@ import java.util.List;
 public class CommandeDtoDetail implements Serializable {
     Long id;
     Date date;
-    Long idclient;
     List<LigneCommandeDto> listligneCommande;
     double prixTotal;
     String statut;
