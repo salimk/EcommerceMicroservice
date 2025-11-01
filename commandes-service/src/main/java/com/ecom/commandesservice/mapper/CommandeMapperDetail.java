@@ -12,7 +12,7 @@ public interface CommandeMapperDetail {
 
     @AfterMapping
     default void linkListligneCommande(@MappingTarget Commande commande) {
-        commande.getListligneCommande().forEach(listligneCommande -> listligneCommande.setCommande(commande));
+        commande.getLignesCommande().forEach(ligneCommande -> ligneCommande.setCommande(commande));
     }
 
     CommandeDtoDetail toDto(Commande commande);

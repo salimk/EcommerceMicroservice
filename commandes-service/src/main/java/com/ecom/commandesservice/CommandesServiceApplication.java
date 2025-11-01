@@ -9,6 +9,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
+import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.context.annotation.Bean;
 
 import java.util.Arrays;
@@ -17,6 +18,8 @@ import java.util.List;
 
 @SpringBootApplication
 @EnableDiscoveryClient
+@EnableFeignClients
+
 public class CommandesServiceApplication {
 
     public static void main(String[] args) {
@@ -27,15 +30,14 @@ public class CommandesServiceApplication {
     ApplicationRunner init(CommandeService commandeService) {
         return args -> {
 
-            Commande commandeA = new Commande(null,new Date(),null,0,"en-cours");
+            Commande commandeA = new Commande(null,1L,new Date(),null,0,"en-cours");
 
-            LigneCommande ligne1 = new LigneCommande(null, commandeA, "1321654", "laptop", 1, 2000.00);
-            LigneCommande ligne2 = new LigneCommande(null, commandeA, "1321654", "laptop", 1, 2000.00);
-            LigneCommande ligne3 = new LigneCommande(null, commandeA, "1321654", "laptop", 1, 2000.00);
+            LigneCommande ligne1 = new LigneCommande(null, commandeA, 1L, 1, 100,0);
+            LigneCommande ligne2 = new LigneCommande(null, commandeA, 2L, 2, 2000, 0);
+            LigneCommande ligne3 = new LigneCommande(null, commandeA, 3L, 3, 2500, 0);
 
             List<LigneCommande> lignes = Arrays.asList(ligne1, ligne2, ligne3);
-            commandeA.setListligneCommande(lignes);
-
+            commandeA.setLignesCommande(lignes);
 
             commandeService.ajouterCommande(commandeA);
         };

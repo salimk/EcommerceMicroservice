@@ -10,25 +10,35 @@ public class Produit {
     @Column(name = "id", nullable = false)
     private Long id;
     private String nom;
-    private String codebarre;
+    private String description;
+    private String sku;
     private double prix;
 
     public Produit() {
     }
 
-    public Produit(Long id, String codebarre, String nom,  double prix) {
-        this.prix = prix;
-        this.codebarre = codebarre;
-        this.nom = nom;
+    public Produit(Long id, String description, String nom, String sku,double prix) {
         this.id = id;
+        this.prix = prix;
+        this.sku = sku;
+        this.description = description;
+        this.nom = nom;
     }
 
-    public String getCodebarre() {
-        return codebarre;
+    public String getDescription() {
+        return description;
     }
 
-    public void setCodebarre(String codebarre) {
-        this.codebarre = codebarre;
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getSku() {
+        return sku;
+    }
+
+    public void setSku(String sku) {
+        this.sku = sku;
     }
 
     public double getPrix() {

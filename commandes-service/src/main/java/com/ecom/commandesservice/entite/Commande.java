@@ -16,9 +16,10 @@ public class Commande {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     private Long id;
-    private Date date;
+    private Long ClientId;
+    private Date dateCommande;
     @OneToMany(mappedBy = "commande", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<LigneCommande> listligneCommande;
+    private List<LigneCommande> lignesCommande;
     private double prixTotal;
     private String statut;
 }

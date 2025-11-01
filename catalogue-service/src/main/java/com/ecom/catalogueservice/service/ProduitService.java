@@ -16,15 +16,15 @@ public class ProduitService {
         this.produitRepository = produitRepository;
     }
 
-    public List<Produit> findAll(){
+    public List<Produit> getAllProduits(){
         return produitRepository.findAll();
     }
 
-    public Produit findById(Long id){
+    public Produit getProduitById(Long id){
         return produitRepository.findById(id).orElseThrow(() -> new EntityNotFoundException());
 
     }
-    public void save(Produit produit) {
+    public void AjouterProduit(Produit produit) {
         produitRepository.save(produit);
     }
 }
