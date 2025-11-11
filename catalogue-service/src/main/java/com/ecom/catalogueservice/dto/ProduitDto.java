@@ -12,13 +12,15 @@ public class ProduitDto implements Serializable {
     private final String description;
     private final String sku;
     private final double prix;
+    private final int qteStock;
 
-    public ProduitDto(Long id, String nom, String description, String sku, double prix) {
+    public ProduitDto(Long id, String nom, String description, String sku, double prix, int qteStock) {
         this.id = id;
         this.nom = nom;
         this.description = description;
         this.sku = sku;
         this.prix = prix;
+        this.qteStock = qteStock;
     }
 
     public Long getId() {
@@ -41,6 +43,10 @@ public class ProduitDto implements Serializable {
         return prix;
     }
 
+    public int getQteStock() {
+        return qteStock;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -50,12 +56,13 @@ public class ProduitDto implements Serializable {
                 Objects.equals(this.nom, entity.nom) &&
                 Objects.equals(this.description, entity.description) &&
                 Objects.equals(this.sku, entity.sku) &&
-                Objects.equals(this.prix, entity.prix);
+                Objects.equals(this.prix, entity.prix) &&
+                Objects.equals(this.qteStock, entity.qteStock);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, nom, description, sku, prix);
+        return Objects.hash(id, nom, description, sku, prix, qteStock);
     }
 
     @Override
@@ -65,6 +72,7 @@ public class ProduitDto implements Serializable {
                 "nom = " + nom + ", " +
                 "description = " + description + ", " +
                 "sku = " + sku + ", " +
-                "prix = " + prix + ")";
+                "prix = " + prix + ", " +
+                "qteStock = " + qteStock + ")";
     }
 }

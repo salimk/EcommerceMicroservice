@@ -19,9 +19,10 @@ public class ClientsServiceApplication {
     @Bean
     ApplicationRunner init(ClientService clientService) {
         return args -> {
-            clientService.saveClient(new Client(null, "amine@email.com", "Amin jamali"));
-            clientService.saveClient(new Client(null, "Jad@email.com", "Jad Fahri"));
-            clientService.saveClient(new Client(null, "khalil@email.com", "khalil Salim"));
+            clientService.saveClient(new Client(null, "amine@email.com", "Amin jamali",1));
+            clientService.saveClient(new Client(null, "Jad@email.com", "Jad Fahri",2));
+            clientService.saveClient(new Client(null, "khalil@email.com", "khalil Salim",0));
+            clientService.saveClient(new Client(null, "Issam@email.com", "Issam kamal",1));
         };
     }
 

@@ -1,14 +1,13 @@
-package com.ecom.commandesservice.apicall;
+package com.ecom.commandesservice.feignrequests;
 
-
-import com.ecom.commandesservice.apicall.dtoResponse.ClientResponse;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
 @FeignClient(name = "clients-service")
-public interface ClientServiceFeign {
+public interface UsersFeignRequest {
     @GetMapping("/clients/{id}")
-    ResponseEntity<ClientResponse> getProduitbyId(@PathVariable("id") Long id);
+    ResponseEntity<ClientDto> getClientById(@PathVariable Long id);
+
 }

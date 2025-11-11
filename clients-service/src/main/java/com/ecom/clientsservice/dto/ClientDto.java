@@ -10,11 +10,14 @@ public class ClientDto implements Serializable {
     private final Long id;
     private final String name;
     private final String email;
+    private final int etat;
 
-    public ClientDto(Long id, String name, String email) {
+
+    public ClientDto(Long id, String name, String email, int etat) {
         this.id = id;
         this.name = name;
         this.email = email;
+        this.etat = etat;
     }
 
     public Long getId() {
@@ -36,12 +39,13 @@ public class ClientDto implements Serializable {
         ClientDto entity = (ClientDto) o;
         return Objects.equals(this.id, entity.id) &&
                 Objects.equals(this.name, entity.name) &&
+                Objects.equals(this.etat, entity.etat) &&
                 Objects.equals(this.email, entity.email);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, email);
+        return Objects.hash(id, name, email,etat);
     }
 
     @Override
@@ -49,6 +53,11 @@ public class ClientDto implements Serializable {
         return getClass().getSimpleName() + "(" +
                 "id = " + id + ", " +
                 "name = " + name + ", " +
+                "etat = " + etat + ", " +
                 "email = " + email + ")";
+    }
+
+    public int getEtat() {
+        return etat;
     }
 }

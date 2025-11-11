@@ -17,28 +17,31 @@ import java.util.List;
 @RequestMapping("/commandes")
 public class CommandeController {
     private final CommandeService commandeService;
-    private final CommandeMapper CommandeMapper;
-    private final CommandeMapperDetail CommandeMapperDetail;
+    private final CommandeMapper commandeMapper;
+    private final CommandeMapperDetail commandeMapperDetail;
 
     public CommandeController(CommandeService commandeService, CommandeMapper commandeMapper, CommandeMapperDetail commandeMapperDetail){
         this.commandeService = commandeService;
-        CommandeMapper = commandeMapper;
-        CommandeMapperDetail = commandeMapperDetail;
+        this.commandeMapper = commandeMapper;
+        this.commandeMapperDetail = commandeMapperDetail;
     }
+
+
+@PostMapping("/new")
+public ResponseEntity<?> createCommande(@RequestBody CreateCommandeDto createCommandeDto,
+                                        @RequestHeader(name="idempotencyKey") String idempotency ){
+        return commandeService.createCommande(commandeMapper.toEntity(createCommandeDto),idempotency);
+}
 
     @GetMapping
     public ResponseEntity<List<CommandeDto>> getlistCommandes(){
-        return ResponseEntity.ok(commandeService.listallCommande().stream().map(CommandeMapper::toDto).toList());
+        return ResponseEntity.ok(commandeService.listallCommande().stream().map(commandeMapper::toDto).toList());
     }
 
     @GetMapping("/{id}")
     public ResponseEntity<CommandeDtoDetail> getCommandeById(@PathVariable Long id){
-        return ResponseEntity.ok(CommandeMapperDetail.toDto(commandeService.getCommandeById(id)));
+        return ResponseEntity.ok(commandeMapperDetail.toDto(commandeService.getCommandeById(id)));
     }
 
-    @PostMapping("/new")
-    public ResponseEntity<?> addCommande(@RequestBody CreateCommandeDto dtocommande){
-        return commandeService.ajouterCommande(CommandeMapper.toEntity(dtocommande));
-    }
 
 }

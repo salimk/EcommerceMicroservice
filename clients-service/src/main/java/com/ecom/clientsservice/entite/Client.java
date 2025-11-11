@@ -12,14 +12,25 @@ public class Client {
 
      private String name;
      private String email;
+     private int etat;
 
     public Client() {
     }
 
-    public Client(Long id, String email, String name) {
+
+    public Client(Long id, String name, String email, int etat) {
         this.id = id;
-        this.email = email;
         this.name = name;
+        this.email = email;
+        this.etat = etat;
+    }
+
+    public int getEtat() {
+        return etat;
+    }
+
+    public void setEtat(int etat) {
+        this.etat = etat;
     }
 
     public String getName() {

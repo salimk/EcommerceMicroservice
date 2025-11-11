@@ -16,7 +16,9 @@ public class Commande {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     private Long id;
-    private Long ClientId;
+    @Column(unique = true, length = 255)
+    private String idempotencyKey;
+    private Long clientId;
     private Date dateCommande;
     @OneToMany(mappedBy = "commande", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<LigneCommande> lignesCommande;

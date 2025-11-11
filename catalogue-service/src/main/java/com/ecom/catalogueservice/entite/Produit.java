@@ -13,16 +13,27 @@ public class Produit {
     private String description;
     private String sku;
     private double prix;
+    private int qteStock;
 
     public Produit() {
     }
 
-    public Produit(Long id, String description, String nom, String sku,double prix) {
+    public Produit(Long id, String description, String nom, String sku,double prix,int qteStock) {
         this.id = id;
         this.prix = prix;
         this.sku = sku;
         this.description = description;
         this.nom = nom;
+        this.qteStock=qteStock;
+
+    }
+
+    public int getQteStock() {
+        return qteStock;
+    }
+
+    public void setQteStock(int qteStock) {
+        this.qteStock = qteStock;
     }
 
     public String getDescription() {

@@ -11,7 +11,8 @@ import java.util.Date;
 @Value
 public class CommandeDto implements Serializable {
     Long id;
-    Long ClientId;
+    String idempotencyKey;
+    Long clientId;
     Date dateCommande;
     double prixTotal;
     String statut;

@@ -1,10 +1,10 @@
-package com.ecom.gateway;
+package com.ecom.paiementservice;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class GatewayApplicationTests {
+class PaiementServiceApplicationTests {
 
     @Test
     void contextLoads() {

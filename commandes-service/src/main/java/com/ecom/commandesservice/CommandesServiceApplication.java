@@ -15,7 +15,7 @@ import org.springframework.context.annotation.Bean;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
-
+import java.util.UUID;
 @SpringBootApplication
 @EnableDiscoveryClient
 @EnableFeignClients
@@ -30,7 +30,7 @@ public class CommandesServiceApplication {
     ApplicationRunner init(CommandeService commandeService) {
         return args -> {
 
-            Commande commandeA = new Commande(null,1L,new Date(),null,0,"en-cours");
+            Commande commandeA = new Commande(null,UUID.randomUUID().toString(),1L,new Date(),null,0,"en-cours");
 
             LigneCommande ligne1 = new LigneCommande(null, commandeA, 1L, 1, 100,0);
             LigneCommande ligne2 = new LigneCommande(null, commandeA, 2L, 2, 2000, 0);

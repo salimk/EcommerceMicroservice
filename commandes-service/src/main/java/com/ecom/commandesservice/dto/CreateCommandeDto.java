@@ -10,7 +10,7 @@ import java.util.List;
  */
 @Value
 public class CreateCommandeDto implements Serializable {
-    Long ClientId;
+    Long clientId;
     List<LigneCommandeDto1> lignesCommande;
 
     /**
