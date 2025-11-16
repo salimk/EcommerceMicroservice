@@ -5,8 +5,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
-@FeignClient(name = "clients-service")
-public interface UsersFeignRequest {
+@FeignClient(name = "clients-service", contextId="clientFeignRequest")
+public interface ClientFeignRequest {
     @GetMapping("/clients/{id}")
     ResponseEntity<ClientDto> getClientById(@PathVariable Long id);
 
