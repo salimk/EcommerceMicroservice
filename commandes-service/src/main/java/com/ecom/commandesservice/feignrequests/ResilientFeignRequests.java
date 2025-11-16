@@ -8,12 +8,18 @@ import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-@AllArgsConstructor
+@Service
 public class ResilientFeignRequests {
     private final ClientFeignRequest clientFeignRequest;
     private final ProduitFeignRequest produitFeignRequest;
+
+    public ResilientFeignRequests(ClientFeignRequest clientFeignRequest, ProduitFeignRequest produitFeignRequest) {
+        this.clientFeignRequest = clientFeignRequest;
+        this.produitFeignRequest = produitFeignRequest;
+    }
 
     @CircuitBreaker(name = "clients-service", fallbackMethod = "getClientByIdFallback")
     @Retry(name = "clients-service")
